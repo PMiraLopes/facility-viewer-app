@@ -1,0 +1,21 @@
+$header-height: 65px;
+
+$sidebar-width: 200px;
+$sidebar-height: calc(100vh - #{$header-height});
+
+$viewer-width: calc(100vw - #{$sidebar-width});
+$viewer-height: calc(100vh - #{$header-height});
+
+$page-width: calc(100% - #{$sidebar-width});
+
+$sidebar-right-width: 300px;
+
+
+//Z-index-layers
+
+$first-layer: 1;
+$second-layer: 10;
+$third-layer: 50;
+$fourth-layer: 100;
+$fifth-layer: 150;
+$sixth-layer:200;

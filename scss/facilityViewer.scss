@@ -1,0 +1,16 @@
+/**
+* SCSS class for import all different parts of the SCSS code to create the CSS code for the project
+*
+**/
+// UTILITIES
+@import "utilities/colors";
+@import "utilities/variables";
+
+//Components
+@import "components/base";
+@import "components/sidebar";
+@import "components/header";
+
+//Pages
+@import "pages/viewer";
+

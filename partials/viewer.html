@@ -1,0 +1,22 @@
+<div class="content-viewer">
+    <div>
+        <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="500px" width="708px"></canvas>
+    </div>
+    <script src="Release/UnityLoader.js"></script>
+</div>
+
+<div class="sidebar-right" id="sidebar-right">
+    <div class="fa fa-angle-right fa-3x close-btn" ng-click="closeSidebar()"></div>
+    <div class="informations">
+        <h4 id="chartBarTitle">{{name}}</h4>
+        <div id="roomInformations">
+            <ul>
+                <li>Ocupation: 10p</li>
+                <li>Temperature: 30ºC</li>
+                <li>Humidity: 30%</li>
+                <li>Consumption: 50W</li>
+            </ul>
+        </div>
+        <div id="chart"></div>
+    </div>
+</div>

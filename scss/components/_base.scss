@@ -1,0 +1,13 @@
+body {
+    height: 100%;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    margin: 0;
+    overflow: hidden;
+}
+
+.modal-dialog {
+    width: 150px;
+    text-align: center;
+    transform: translate(0, 250px) !important;
+}

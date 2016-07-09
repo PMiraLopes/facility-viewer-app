@@ -1,0 +1,55 @@
+.viewer-container {
+    display: inline-block;
+    height: $viewer-height;
+    position: absolute;
+    width: $viewer-width;
+    background-color: $color-grey-100;
+    .content-viewer {
+        padding-top: 15px;
+        padding-left: 15px;
+    }
+    .sidebar-right {
+        background-color: $color-brown-50;
+        height: $sidebar-height;
+        width: $sidebar-right-width;
+        position: absolute;
+        right: -$sidebar-right-width;
+        top: 0;
+        z-index: $second-layer;
+        transition: 1s;
+        &.active {
+            transition: 1s;
+            right: 0;
+        }
+        .close-btn {
+            height: 48px;
+            width: 48px;
+            background-color: $divider-color;
+            height: 48px;
+            width: 48px;
+            text-align: center;
+            &:hover {
+                color: white;
+            }
+        }
+        .informations {
+            border-top: 1px solid $divider-color;
+            h4 {
+                text-align: center;
+                color: white;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+                li {
+                    border-bottom: 1px solid $divider-color;
+                    text-decoration: none;
+                    margin-left: 40px;
+                    margin-right: 40px;
+                    margin-top: 10px;
+                    color: white;
+                }
+            }
+        }
+    }
+}
