@@ -21,7 +21,7 @@
 </head>
 
 <body ng-app="FacilityManager">
-    <main id="controller" ng-controller="FacilityManagerController" ;style="overflow:hidden">
+    <main id="controller" ng-controller="FacilityMonitor" style="overflow:hidden">
         <div class="header">
             <h3>3D Facility Manager</h3>
         </div>
@@ -39,7 +39,7 @@
                     </div>
                     <div id="collapse1" class="panel-collapse collapse">
                         <div class="panel-entry" ng-repeat="space in spaces">
-                            <span ng-click="selectRoom(space)">- {{space}}</span>
+                            <span ng-click="selectRoom(space)">- {{space.spaceName}}</span>
                         </div>
                     </div>
                     <div class="panel" data-toggle="collapse" href="#collapse-floors">
