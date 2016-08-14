@@ -60,6 +60,7 @@ angular.module('FacilityManager', ['ui.router'])
     $scope.open = true;
     $rootScope.name = space.spaceName;
     $rootScope.objects = space.objects;
+    SendMessage("ObjectManager", "selectSpace", space.spaceName);
   }
 
   $scope.isSidebarOpen = function () {
