@@ -57,3 +57,23 @@
         }
     }
 }
+
+.link {
+  text-decoration: none;
+  color: black;
+  padding-top: 5px;
+
+  &:hover{
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.link-container {
+  width: 140px;
+  border-top: 1px solid black;
+}
+
+.md-sidenav-left {
+  width: 230px;
+}

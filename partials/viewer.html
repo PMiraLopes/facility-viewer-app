@@ -1,30 +1,62 @@
 <div class="content-viewer">
-  <div>
-      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="500px" width="708px"></canvas>
-  </div>
+  <md-card md-theme-watch>
+    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="500px" width="708px"></canvas>
+  </md-card>
   <script src="Release/UnityLoader.js"></script>
-</div>
 
-<div class="sidebar-right" id="sidebar-right">
-  <div class="fa fa-angle-right fa-3x close-btn" ng-click="closeSidebar()"></div>
-  <div class="informations">
-    <h4 id="chartBarTitle">{{name}}</h4>
-    <div id="roomInformations">
-      <ul>
-        <li>Ocupation: 10p</li>
-        <li>Temperature: 30ºC</li>
-        <li>Humidity: 30%</li>
-        <li>Consumption: 50W</li>
-      </ul>
-    </div>
-    <div>
-      <h5>Objects in Room</h5>
-      <ul>
-        <li ng-repeat="object in objects">
-           {{object}}
-        </li>
-      </ul>
-    </div>
-    <div id="chart"></div>
-  </div>
+  <md-sidenav
+    class="md-sidenav-right"
+    md-component-id="right"
+    md-disable-backdrop md-whiteframe="4"
+  >
+    <md-toolbar class="md-theme-light">
+      <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleRight()">
+        <md-icon md-svg-icon="images/icons/close.svg"></md-icon>
+      </md-button>
+    </md-toolbar>
+    <md-content layout-margin>
+      <div ng-cloak>
+        <md-content>
+          <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Informations">
+              <md-content class="md-padding">
+                <div class="informations">
+                  <h4 id="chartBarTitle">{{name}}</h4>
+                  <div id="roomInformations">
+                    <ul>
+                      <li>Ocupation: 10p</li>
+                      <li>Temperature: 30ºC</li>
+                      <li>Humidity: 30%</li>
+                      <li>Consumption: 50W</li>
+                    </ul>
+                  </div>
+                  <md-whiteframe class="md-whiteframe-1dp chart-app" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+                    <div class="chart-container">
+                      <canvas
+                      id="line" class="chart chart-line" chart-data="data"
+                      chart-labels="labels" chart-series="series" chart-options="options"
+                      chart-dataset-override="datasetOverride" chart-click="onClick"
+                      >
+                      </canvas>
+                    </div>
+                  </md-whiteframe>
+                </div>
+            </md-tab>
+            <md-tab label="Objects">
+              <md-content class="md-padding">
+                <div>
+                  <h5>Objects in Room</h5>
+                  <ul>
+                    <li ng-repeat="object in objects">
+                       {{object}}
+                    </li>
+                  </ul>
+                </div>
+              </md-content>
+            </md-tab>
+          </md-tabs>
+        </md-content>
+      </div>
+    </md-content>
+  </md-sidenav>
 </div>

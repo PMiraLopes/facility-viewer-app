@@ -11,51 +11,75 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/facilityViewer.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+
 
     <script src="TemplateData/UnityProgress.js"></script>
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
 </head>
 
 <body ng-app="FacilityManager">
     <main id="controller" ng-controller="FacilityMonitor" style="overflow:hidden">
-        <div class="header">
-            <h3>3D Facility Manager</h3>
+      <md-toolbar class="md-hue-2 md-theme-indigo header">
+        <div class="md-toolbar-tools">
+          <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
+            <md-icon md-svg-icon="images/icons/menu.svg"></md-icon>
+          </md-button>
+          <h3>
+            Facility Manager
+          </h3>
         </div>
-        <div class="sidebar">
-            <div class="nav-modes">
-                <span class="nav-modes-title">Camera Mode</span>
-                <div class="nav-modes-icon fa fa-repeat fa-4" ng-click='setOrbitMode()' data-toggle="tooltip" data-placement="bottom" title="Orbit Mode"></div>
-                <div class="nav-modes--icon fa fa-arrows-alt fa-4" ng-click='setNormalMode()' data-toggle="tooltip" data-placement="bottom" title="Normal Mode"></div>
-            </div>
-            <div class="container">
-                <div class="panel-group">
-                    <div class="panel" data-toggle="collapse" href="#collapse1">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        <span>Spaces</span>
-                    </div>
-                    <div id="collapse1" class="panel-collapse collapse">
-                        <div class="panel-entry" ng-repeat="space in spaces">
-                            <span ng-click="selectRoom(space)">- {{space.spaceName}}</span>
-                        </div>
-                    </div>
-                    <div class="panel" data-toggle="collapse" href="#collapse-floors">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        <span>Floors</span>
-                    </div>
-                    <div id="collapse-floors" class="panel-collapse collapse">
-                        <div class="panel-entry" ng-repeat="floor in floors">
-                            <span ng-click="selectLevel(floor)"> - {{floor}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="viewer-container" ui-view></div>
-    </main>
+      </md-toolbar>
+
+      <div class="viewer-container" ui-view></div>
+
+      <md-sidenav
+        class="md-sidenav-left"
+        md-component-id="left"
+        md-disable-backdrop md-whiteframe="4"
+      >
+        <md-toolbar class="md-theme-light">
+          <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
+            <md-icon md-svg-icon="images/icons/close.svg"></md-icon>
+          </md-button>
+        </md-toolbar>
+        <md-content layout-margin>
+          <h5>Rooms</h5>
+          <ul>
+            <li ng-repeat="space in spaces">
+              <span ng-click="selectRoom(space)">{{space.spaceName}}</span>
+            </li>
+          </ul>
+          <md-divider></md-divider>
+          <h5>Floors</h5>
+          <ul>
+            <li ng-repeat="space in spaces">
+              <span ng-click="selectLevel(floor)">{{floor}}</span>
+            </li>
+          </ul>
+          <md-divider></md-divider>
+          <h5>Cameras</h5>
+          <md-button class="md-icon-button" aria-label="Settings" ng-click="setOrbitMode()">
+            <md-icon md-svg-icon="images/icons/orbit.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Settings" ng-click="setNormalMode()">
+            <md-icon md-svg-icon="images/icons/normal-camera.svg"></md-icon>
+          </md-button>
+          <md-divider></md-divider>
+            <a ui-sref="dashboard" class="link">Dashboard ></a>
+            <Button ng-click="toggleBoxesView()">Togle</Button>
+        </md-content>
+    </md-sidenav>
+  </main>
 
 </body>
 

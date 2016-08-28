@@ -1,0 +1,24 @@
+<div class="content-viewer">
+    <md-whiteframe class="md-whiteframe-1dp chart-app" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+      <div class="chart-container">
+        <canvas
+          id="bar"
+          class="chart chart-bar"
+          chart-data="barData"
+          chart-labels="barLabels"
+          chart-series="barSeries"
+        >
+        </canvas>
+      </div>
+    </md-whiteframe>
+    <md-whiteframe class="md-whiteframe-1dp chart-app" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+      <div class="chart-container">
+        <canvas
+        id="line" class="chart chart-line" chart-data="data"
+        chart-labels="labels" chart-series="series" chart-options="options"
+        chart-dataset-override="datasetOverride" chart-click="onClick"
+        >
+        </canvas>
+      </div>
+    </md-whiteframe>
+</div>
