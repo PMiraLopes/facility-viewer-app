@@ -1,0 +1,28 @@
+{
+  "name": "consumptions-data-server",
+  "version": "1.0.0",
+  "description": "A server for create dummy data to Pedro Mira Lopes's masters thesis",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PMiraLopes/facility-viewer-app.git"
+  },
+  "keywords": [
+    "server",
+    "nodejs",
+    "angularjs"
+  ],
+  "author": "Pedro Mira Lopes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PMiraLopes/facility-viewer-app/issues"
+  },
+  "homepage": "https://github.com/PMiraLopes/facility-viewer-app#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
