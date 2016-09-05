@@ -40,3 +40,4 @@ Thumbs.db
 # Folders to be ignored#
 ########################
 Temp/
+.sass-cache/

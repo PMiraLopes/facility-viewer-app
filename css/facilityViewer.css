@@ -133,15 +133,24 @@ body {
           margin-top: 10px;
           color: white; }
 
-.chart-app {
-  padding: 5px;
-  background-color: white;
-  border-radius: 4px;
-  display: inline-block !important;
-  margin: 5px;
-  width: 300px !important; }
-
-.chart-container {
-  width: 400px; }
+.chart-viewer {
+  padding-top: 15px;
+  display: block;
+  height: 100%;
+  overflow-y: scroll; }
+  .chart-viewer .charts-box {
+    display: flex;
+    flex-flow: row;
+    padding-bottom: 16px; }
+    .chart-viewer .charts-box .chart-container {
+      margin-left: 15px;
+      width: 350px;
+      text-align: center;
+      background-color: white;
+      border-radius: 4px;
+      -webkit-box-shadow: 3px 3px 8px 0px #a8a8a8;
+      -moz-box-shadow: 3px 3px 8px 0px #a8a8a8;
+      box-shadow: 3px 3px 8px 0px #a8a8a8;
+      height: 180px; }
 
 /*# sourceMappingURL=facilityViewer.css.map */

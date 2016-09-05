@@ -25,10 +25,12 @@
     <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
     <script src="node_modules/angular-material/angular-material.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers/viewer.js"></script>
+    <script type="text/javascript" src="js/controllers/dashboard.js"></script>
 </head>
 
 <body ng-app="FacilityManager">
-    <main id="controller" ng-controller="FacilityMonitor" style="overflow:hidden">
+    <main id="controller" ng-controller="ViewerCtrl" style="overflow:hidden">
       <md-toolbar class="md-hue-2 md-theme-indigo header">
         <div class="md-toolbar-tools">
           <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
@@ -53,6 +55,32 @@
           </md-button>
         </md-toolbar>
         <md-content layout-margin>
+          <h5>Cameras</h5>
+          <md-button class="md-icon-button" aria-label="Settings" ng-click="setOrbitMode()">
+            <md-icon md-svg-icon="images/icons/orbit.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Settings" ng-click="setNormalMode()">
+            <md-icon md-svg-icon="images/icons/normal-camera.svg"></md-icon>
+          </md-button>
+        </md-content>
+
+        <md-divider></md-divider>
+
+        <md-content layout-margin>
+          <h5>Views</h5>
+          <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleBoxesView()">
+            <md-icon md-svg-icon="images/icons/boxes.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Settings" ui-sref="dashboard">
+            <md-icon md-svg-icon="images/icons/dashboard.svg"></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Settings" ui-sref="viewer">
+            <md-icon md-svg-icon="images/icons/viewer.svg"></md-icon>
+          </md-button>
+        </md-content>
+
+        <md-divider></md-divider>
+
           <h5>Rooms</h5>
           <ul>
             <li ng-repeat="space in spaces">
@@ -66,18 +94,6 @@
               <span ng-click="selectLevel(floor)">{{floor}}</span>
             </li>
           </ul>
-          <md-divider></md-divider>
-          <h5>Cameras</h5>
-          <md-button class="md-icon-button" aria-label="Settings" ng-click="setOrbitMode()">
-            <md-icon md-svg-icon="images/icons/orbit.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button" aria-label="Settings" ng-click="setNormalMode()">
-            <md-icon md-svg-icon="images/icons/normal-camera.svg"></md-icon>
-          </md-button>
-          <md-divider></md-divider>
-            <a ui-sref="dashboard" class="link">Dashboard ></a>
-            <Button ng-click="toggleBoxesView()">Togle</Button>
-        </md-content>
     </md-sidenav>
   </main>
 

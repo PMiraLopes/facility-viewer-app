@@ -1,12 +1,22 @@
-.chart-app {
-    padding: 5px;
-    background-color: white;
-    border-radius: 4px;
-    display: inline-block !important;
-    margin: 5px;
-    width: 300px !important;
-}
-
-.chart-container{
-  width: 400px;
+.chart-viewer {
+  padding-top: 15px;
+  display: block;;
+  height: 100%;
+  overflow-y: scroll;
+  .charts-box{
+    display: flex;
+    flex-flow: row;
+    padding-bottom: 16px;
+    .chart-container{
+      margin-left: 15px;
+      width: 350px;
+      text-align: center;
+      background-color: white;
+      border-radius: 4px;
+      -webkit-box-shadow: 3px 3px 8px 0px rgba(168,168,168,1);
+      -moz-box-shadow: 3px 3px 8px 0px rgba(168,168,168,1);
+      box-shadow: 3px 3px 8px 0px rgba(168,168,168,1);
+      height: 180px;
+    }
+  }
 }

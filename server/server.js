@@ -93,15 +93,16 @@ var index = fs.readFileSync('../index.html');
  app.set('port', process.env.PORT || 3000);
 
  app.get('/', function (req, res) {
-   res.writeHead(200, {'Content-Type': 'text/html'});
-   res.end(index);
+   res.sendfile('../index.html'); // load the single view file (angular will handle the page changes on the front-end)
  });
 
  app.get('/measures', function (req, res) {
+   res.set("Access-Control-Allow-Origin", "*");
    res.send(JSON.stringify(dummyData));
  });
 
  app.get('/overall-consumption', function (req, res) {
+   res.set("Access-Control-Allow-Origin", "*");
    res.send(JSON.stringify(overallConsumption));
  });
 
@@ -117,7 +118,8 @@ var index = fs.readFileSync('../index.html');
    res.send(JSON.stringify(data));
  });
 
- app.get('/all-consumption', function (req, res) {
+ app.get('/consumption', function (req, res) {
+   res.set("Access-Control-Allow-Origin", "*");
    res.send(jsonData);
  });
 

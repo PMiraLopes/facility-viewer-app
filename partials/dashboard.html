@@ -1,24 +1,63 @@
-<div class="content-viewer">
-    <md-whiteframe class="md-whiteframe-1dp chart-app" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+<div class="chart-viewer">
+    <div class="charts-box">
       <div class="chart-container">
         <canvas
           id="bar"
           class="chart chart-bar"
           chart-data="barData"
           chart-labels="barLabels"
+          chart-legend="true"
           chart-series="barSeries"
+          chart-options="barOptions"
+          chart-colors="colors"
         >
         </canvas>
       </div>
-    </md-whiteframe>
-    <md-whiteframe class="md-whiteframe-1dp chart-app" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
       <div class="chart-container">
         <canvas
-        id="line" class="chart chart-line" chart-data="data"
-        chart-labels="labels" chart-series="series" chart-options="options"
-        chart-dataset-override="datasetOverride" chart-click="onClick"
+          id="line"
+          class="chart chart-line"
+          chart-data="chartData"
+          chart-labels="chartLabels"
+          chart-series="chartSeries"
+          chart-options="chartOptions"
+          chart-colors="colors"
+        </canvas>
+      </div>
+      <div class="chart-container">
+        <canvas
+          id="yearsline"
+          class="chart chart-line"
+          chart-data="yearsChartData"
+          chart-labels="chartLabels"
+          chart-series="yearsChartSeries"
+          chart-options="yearsChartOptions"
+          chart-colors="colors"
+        </canvas>
+      </div>
+    </div>
+    <div class="charts-box">
+      <div class="chart-container">
+        <canvas
+          id="pie"
+          class="chart chart-pie"
+          chart-data="pieChartData"
+          chart-labels="pieChartLabels"
+          chart-options="pieChartOptions"
+          chart-colors="colors"
         >
         </canvas>
       </div>
-    </md-whiteframe>
+      <div class="chart-container">
+        <canvas
+          id="line"
+          class="chart chart-line"
+          chart-data="priceChartData"
+          chart-labels="priceChartLabels"
+          chart-series="priceChartSeries"
+          chart-options="priceChartOptions"
+          chart-colors="colors"
+        </canvas>
+      </div>
+    </div>
 </div>
