@@ -28,8 +28,9 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
 .controller('ViewerCtrl', ['$scope', '$timeout', '$rootScope', '$mdSidenav', function ($scope, $timeout, $rootScope, $mdSidenav) {
   $scope.spaces = [];
   $scope.floors = [];
-
-  console.log("ViewerCtrl working")
+  $scope.camera = 'orbit';
+  $scope.boxesView = false;
+  $scope.activeSpace = null;
 
   $scope.setSpaces = function(spaces) {
     var list = []
@@ -50,32 +51,33 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
   }
 
   $scope.toggleBoxesView = function () {
+    $scope.boxesView = !$scope.boxesView;
     SendMessage("ObjectManager", "toggleBoxesView", "");
   }
 
+  $scope.toggleObjectsView = function () {
+
+  }
+
   $scope.selectRoom = function (space) {
-  //  $("#sidebar-right").addClass("active");
-    if(!$scope.open)
-      $scope.toggleRight();
-    $scope.open = true;
+
+    if(!$mdSidenav('right').isOpen()){
+      $scope.openSidenav();
+    }
+
     $rootScope.name = space.spaceName;
     $rootScope.objects = space.objects;
     SendMessage("ObjectManager", "selectSpace", space.spaceName);
   }
 
-  $scope.closeSidebar = function () {
-      $('#sidebar-right').removeClass('active');
-      $scope.open = false;
-  }
-
   $scope.setOrbitMode = function () {
-      console.log("Nvaigation mode: orbit");
-      SendMessage("ObjectManager", "orbitMode", "");
+    $scope.camera = 'orbit';
+    SendMessage("ObjectManager", "orbitMode", "");
   }
 
   $scope.setNormalMode = function () {
-      console.log("Navigation mode: normal");
-      SendMessage("ObjectManager", "normalMode", "");
+    $scope.camera = 'normal';
+    SendMessage("ObjectManager", "normalMode", "");
   }
 
   $timeout(function () {
@@ -129,13 +131,12 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
   ];
 
   ///////// SIDEBAR /////////
-  $scope.toggleLeft = buildToggler('left');
-  $scope.toggleRight = buildToggler('right');
+  $scope.openSidenav = function () {
+    $mdSidenav('right').open();
+  };
 
-  function buildToggler(componentId) {
-    return function() {
-      $mdSidenav(componentId).toggle();
-    }
+  $scope.closeSidenav = function () {
+    $mdSidenav('right').close();
   }
 
 }]);

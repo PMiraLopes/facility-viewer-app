@@ -11,3 +11,43 @@ body {
     text-align: center;
     transform: translate(0, 250px) !important;
 }
+
+.main-container {
+  width: calc(100vw - 175px);
+  height: 100vh;
+  overflow: hidden;
+
+  .container{
+    width: 100%;
+    padding: 0px;
+  }
+
+  .nav-tabs {
+    border-bottom: 1px solid grey;
+    background: white;
+    text-align: center;
+    li {
+      display: inline-block;
+      margin: 0px;
+      float: inherit;
+      a {
+        color: #555;
+      };
+
+      &.active {
+        a {
+          font-weight: 500;
+          border: 0;
+          border-bottom: 2px solid #03a9db;
+        }
+      };
+    }
+  }
+}
+
+.manager-container {
+  width: calc(100vw - 175px);
+  height: 100vh;
+  overflow: hidden;
+  display: inline-block;
+}

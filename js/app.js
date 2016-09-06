@@ -17,10 +17,10 @@ angular.module('FacilityManager', [
         controller: "ViewerCtrl"
     });
 
-  $stateProvider
+  /*$stateProvider
     .state('dashboard', {
         url: "/dashboard",
         templateUrl: "partials/dashboard.html",
         controller: "DashboardCtrl"
-    });
+    });*/
 });

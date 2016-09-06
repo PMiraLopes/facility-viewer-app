@@ -1,62 +1,184 @@
-<div class="content-viewer">
-  <md-card md-theme-watch>
-    <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="500px" width="708px"></canvas>
-  </md-card>
-  <script src="Release/UnityLoader.js"></script>
+<div class="main-container">
+  <div class="container">
 
-  <md-sidenav
-    class="md-sidenav-right"
-    md-component-id="right"
-    md-disable-backdrop md-whiteframe="4"
-  >
-    <md-toolbar class="md-theme-light">
-      <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleRight()">
-        <md-icon md-svg-icon="images/icons/close.svg"></md-icon>
-      </md-button>
-    </md-toolbar>
-    <md-content layout-margin>
-      <div ng-cloak>
-        <md-content>
-          <md-tabs md-dynamic-height md-border-bottom>
-            <md-tab label="Informations">
-              <md-content class="md-padding">
-                <div class="informations">
-                  <h4 id="chartBarTitle">{{name}}</h4>
-                  <div id="roomInformations">
-                    <ul>
-                      <li>Ocupation: 10p</li>
-                      <li>Temperature: 30ºC</li>
-                      <li>Humidity: 30%</li>
-                      <li>Consumption: 50W</li>
-                    </ul>
-                  </div>
-                  <md-whiteframe class="md-whiteframe-1dp chart-app" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
-                    <div class="chart-container">
-                      <canvas
-                      id="line" class="chart chart-line" chart-data="data"
-                      chart-labels="labels" chart-series="series" chart-options="options"
-                      chart-dataset-override="datasetOverride" chart-click="onClick"
-                      >
-                      </canvas>
-                    </div>
-                  </md-whiteframe>
-                </div>
-            </md-tab>
-            <md-tab label="Objects">
-              <md-content class="md-padding">
-                <div>
-                  <h5>Objects in Room</h5>
-                  <ul>
-                    <li ng-repeat="object in objects">
-                       {{object}}
-                    </li>
-                  </ul>
-                </div>
-              </md-content>
-            </md-tab>
-          </md-tabs>
-        </md-content>
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a data-toggle="tab" href="#viewer">Viewer</a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#dashboard">Dashboard</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+
+      <div id="viewer" class="tab-pane fade in active">
+        <div class="content-viewer">
+          <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="500px" width="708px"></canvas>
+          <script src="Release/UnityLoader.js" />
+        </div>
       </div>
-    </md-content>
-  </md-sidenav>
+
+      <div id="dashboard" class="tab-pane fade" ng-controller="DashboardCtrl">
+        <div class="chart-viewer">
+            <div class="charts-box">
+              <div class="chart-container">
+                <canvas
+                  id="bar"
+                  class="chart chart-bar"
+                  chart-data="barData"
+                  chart-labels="barLabels"
+                  chart-legend="true"
+                  chart-series="barSeries"
+                  chart-options="barOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>
+              <div class="chart-container">
+                <canvas
+                  id="line"
+                  class="chart chart-line"
+                  chart-data="chartData"
+                  chart-labels="chartLabels"
+                  chart-series="chartSeries"
+                  chart-options="chartOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>
+              <div class="chart-container">
+                <canvas
+                  id="yearsline"
+                  class="chart chart-line"
+                  chart-data="yearsChartData"
+                  chart-labels="chartLabels"
+                  chart-series="yearsChartSeries"
+                  chart-options="yearsChartOptions"
+                  chart-colors="colors">
+                </canvas>
+              </div>
+            </div>
+            <div class="charts-box">
+              <div class="chart-container">
+                <canvas
+                  id="pie"
+                  class="chart chart-pie"
+                  chart-data="pieChartData"
+                  chart-labels="pieChartLabels"
+                  chart-options="pieChartOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>
+              <div class="chart-container">
+                <canvas
+                  id="line"
+                  class="chart chart-line"
+                  chart-data="priceChartData"
+                  chart-labels="priceChartLabels"
+                  chart-series="priceChartSeries"
+                  chart-options="priceChartOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
 </div>
+
+<md-sidenav
+  class="md-sidenav-right sidebarRight"
+  md-component-id="right"
+  md-disable-backdrop md-whiteframe="4"
+>
+  <md-toolbar class="sidebarRight-header">
+    <md-button class="md-icon-button sidebar-button" aria-label="Settings" ng-click="closeSidenav()">
+      <md-icon md-svg-icon="images/icons/close.svg"></md-icon>
+    </md-button>
+    <h4 class="title">{{name}}</h4>
+  </md-toolbar>
+  <div class="container">
+
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a data-toggle="tab" href="#informations">Informations</a>
+      </li>
+      <li>
+        <a data-toggle="tab" href="#objects">Objects</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+
+      <div id="informations" class="tab-pane fade in tab-content active">
+        <div id="roomInformations">
+          <ul>
+            <li><b>Ocupation:</b> 10p</li>
+            <li><b>Temperature:</b> 30ºC</li>
+            <li><b>Humidity:</b> 30%</li>
+            <li><b>Consumption:</b> 50W</li>
+          </ul>
+        </div>
+
+        <div ng-controller="DashboardCtrl">
+          <div class="chart">
+            <canvas
+              id="line"
+              class="chart chart-line"
+              chart-data="chartData"
+              chart-labels="chartLabels"
+              chart-series="chartSeries"
+              chart-options="chartOptions"
+              chart-colors="colors"
+            >
+            </canvas>
+          </div>
+          <div class="chart">
+            <canvas
+              id="line"
+              class="chart chart-line"
+              chart-data="priceChartData"
+              chart-labels="priceChartLabels"
+              chart-series="priceChartSeries"
+              chart-options="priceChartOptions"
+              chart-colors="colors"
+            >
+            </canvas>
+          </div>
+        </div>
+      </div>
+
+      <div id="objects" class="tab-pane fade in tab-content">
+        <ul class="ul-objects">
+          <li>
+            <div class="li-option disabled">
+              Name
+            </div>
+            <div class="li-option disabled">
+              Status
+            </div>
+            <div class="li-option disabled">
+              Estimated Consumption
+            </div>
+          </li>
+          <li ng-repeat="object in objects">
+            <div class="li-option">
+              {{object}}
+            </div>
+            <div class="li-option">
+              Active
+            </div>
+            <div class="li-option">
+              On
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</md-sidenav>

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
 * SCSS class for import all different parts of the SCSS code to create the CSS code for the project
 *
@@ -14,124 +15,198 @@ body {
   text-align: center;
   transform: translate(0, 250px) !important; }
 
-.sidebar {
-  width: 200px;
-  height: calc(100vh - 40px);
-  background-color: #4d5254;
-  display: inline-block; }
-  .sidebar .nav-modes {
+.main-container {
+  width: calc(100vw - 175px);
+  height: 100vh;
+  overflow: hidden; }
+  .main-container .container {
     width: 100%;
-    background-color: #5e6466;
-    color: #a3a3ae;
-    font-size: 30px;
-    padding-top: 10px;
-    padding-bottom: 5px; }
-    .sidebar .nav-modes-title {
-      font-size: 16px;
-      display: block;
-      text-align: center;
-      border-bottom: 1px solid #a3a3ae;
-      margin-left: 30px;
-      margin-right: 30px; }
-    .sidebar .nav-modes-icon {
-      text-align: center;
-      width: 45%; }
-  .sidebar .container {
-    width: 100%; }
-    .sidebar .container .panel-group {
-      padding-top: 20px;
-      margin: 0px; }
-      .sidebar .container .panel-group .panel {
-        margin-bottom: 5px;
-        border-radius: 0px;
-        font-size: 13pt;
-        color: white;
-        background: none;
+    padding: 0px; }
+  .main-container .nav-tabs {
+    border-bottom: 1px solid grey;
+    background: white;
+    text-align: center; }
+    .main-container .nav-tabs li {
+      display: inline-block;
+      margin: 0px;
+      float: inherit; }
+      .main-container .nav-tabs li a {
+        color: #555; }
+      .main-container .nav-tabs li.active a {
+        font-weight: 500;
         border: 0;
-        box-shadow: none;
-        padding-left: 20px;
-        color: #a3a3ae; }
-        .sidebar .container .panel-group .panel:hover {
-          color: white;
-          cursor: pointer; }
-      .sidebar .container .panel-group .panel-collapse {
-        font-size: 12pt; }
-        .sidebar .container .panel-group .panel-collapse .panel-entry {
-          color: #a3a3ae;
-          padding-left: 20px; }
-          .sidebar .container .panel-group .panel-collapse .panel-entry:hover {
-            color: white;
-            cursor: pointer; }
+        border-bottom: 2px solid #03a9db; }
 
-.link {
-  text-decoration: none;
-  color: black;
-  padding-top: 5px; }
-  .link:hover {
-    text-decoration: none;
-    color: black; }
+.manager-container {
+  width: calc(100vw - 175px);
+  height: 100vh;
+  overflow: hidden;
+  display: inline-block; }
 
-.link-container {
-  width: 140px;
-  border-top: 1px solid black; }
-
-.md-sidenav-left {
-  width: 230px; }
-
-.header {
-  height: 40px;
-  color: white; }
-  .header h3 {
+.sidebar {
+  width: 175px;
+  height: 100vh;
+  background-color: #1d2532;
+  color: white;
+  font-weight: 400;
+  display: inline-block;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.16), 0px 3px 10px rgba(0, 0, 0, 0.23); }
+  .sidebar .header {
+    background-color: #232c3d;
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 6px;
+    padding-left: 5px;
+    font-size: 20px;
+    font-weight: 600; }
+  .sidebar ul {
+    list-style: none;
+    padding-left: 5px;
     margin: 0;
-    display: inline-block; }
-  .header button {
-    display: inline-block; }
+    padding-top: 10px; }
+    .sidebar ul .tooltip .tooltip-inner {
+      background: white;
+      color: black; }
+    .sidebar ul .tooltip .tooltip-arrow {
+      display: none; }
+    .sidebar ul .icon {
+      fill: white;
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px; }
+      .sidebar ul .icon:hover {
+        fill: #a3afb7; }
+      .sidebar ul .icon.active {
+        fill: grey; }
+    .sidebar ul ul {
+      padding-top: 10px;
+      padding-bottom: 16px; }
+      .sidebar ul ul li span {
+        color: white;
+        border-left: 2px solid transparent;
+        height: 25px;
+        display: block;
+        line-height: 2;
+        padding-left: 5px; }
+        .sidebar ul ul li span:hover {
+          color: #a3afb7; }
+    .sidebar ul h5 {
+      border-top: 1px solid white;
+      padding-top: 16px;
+      margin: 0;
+      margin-right: 5px; }
+    .sidebar ul svg {
+      fill: white; }
+    .sidebar ul li .md-button.md-icon-button  {
+      margin: 0px 0px !important; }
+
+.sidebarRight .sidebarRight-header {
+  min-height: 44px;
+  background: #232c3d; }
+  .sidebarRight .sidebarRight-header .title {
+    margin: 0px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    color: white; }
+.sidebarRight .container {
+  width: 320px; }
+  .sidebarRight .container .tab-content {
+    padding-top: 15px; }
+    .sidebarRight .container .tab-content h5 {
+      margin: 0px;
+      margin-bottom: 10px; }
+    .sidebarRight .container .tab-content ul {
+      padding: 0; }
+      .sidebarRight .container .tab-content ul li {
+        padding-bottom: 5px; }
+    .sidebarRight .container .tab-content .ul-objects {
+      display: flex;
+      padding: 0;
+      flex-flow: column; }
+      .sidebarRight .container .tab-content .ul-objects li {
+        padding-bottom: 5px;
+        padding-top: 5px;
+        border-bottom: 1px solid black;
+        font-size: 12px; }
+        .sidebarRight .container .tab-content .ul-objects li .li-option {
+          display: inline-flex;
+          width: 30%; }
+          .sidebarRight .container .tab-content .ul-objects li .li-option.disabled {
+            color: #a3afb7; }
+          .sidebarRight .container .tab-content .ul-objects li .li-option.on {
+            color: green; }
+    .sidebarRight .container .tab-content .chart {
+      padding-bottom: 20px; }
+  .sidebarRight .container .nav-tabs {
+    border-bottom: 1px solid grey;
+    background: white; }
+    .sidebarRight .container .nav-tabs li {
+      display: inline-block;
+      margin: 0px;
+      float: inherit; }
+      .sidebarRight .container .nav-tabs li a {
+        color: #555; }
+      .sidebarRight .container .nav-tabs li.active a {
+        font-weight: 500;
+        border: 0;
+        border-bottom: 2px solid #03a9db; }
 
 .viewer-container {
   display: inline-block;
-  height: calc(100vh - 40px);
+  height: 100vh;
   position: absolute;
-  width: 100vw;
-  background-color: #e1e9eb; }
+  width: calc(100vw - 175px);
+  background-color: #e1e9eb;
+  /*  .sidebar-right {
+        background-color: $color-brown-50;
+        height: $sidebar-height;
+        width: $sidebar-right-width;
+        position: absolute;
+        right: -$sidebar-right-width;
+        top: 0;
+        z-index: $second-layer;
+        transition: 1s;
+        &.active {
+            transition: 1s;
+            right: 0;
+        }
+        .close-btn {
+            height: 48px;
+            width: 48px;
+            background-color: $divider-color;
+            height: 48px;
+            width: 48px;
+            text-align: center;
+            &:hover {
+                color: white;
+            }
+        }
+        .informations {
+            border-top: 1px solid $divider-color;
+            h4 {
+                text-align: center;
+                color: white;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+                li {
+                    border-bottom: 1px solid $divider-color;
+                    text-decoration: none;
+                    margin-left: 40px;
+                    margin-right: 40px;
+                    margin-top: 10px;
+                    color: white;
+                }
+            }
+        }
+    }*/ }
   .viewer-container .content-viewer {
     padding-top: 15px;
     padding-left: 15px; }
-  .viewer-container .sidebar-right {
-    background-color: #5e6466;
-    height: calc(100vh - 40px);
-    width: 300px;
-    position: absolute;
-    right: -300px;
-    top: 0;
-    z-index: 10;
-    transition: 1s; }
-    .viewer-container .sidebar-right.active {
-      transition: 1s;
-      right: 0; }
-    .viewer-container .sidebar-right .close-btn {
-      height: 48px;
-      width: 48px;
-      background-color: #B6B6B6;
-      height: 48px;
-      width: 48px;
-      text-align: center; }
-      .viewer-container .sidebar-right .close-btn:hover {
-        color: white; }
-    .viewer-container .sidebar-right .informations {
-      border-top: 1px solid #B6B6B6; }
-      .viewer-container .sidebar-right .informations h4 {
-        text-align: center;
-        color: white; }
-      .viewer-container .sidebar-right .informations ul {
-        list-style: none;
-        padding: 0; }
-        .viewer-container .sidebar-right .informations ul li {
-          border-bottom: 1px solid #B6B6B6;
-          text-decoration: none;
-          margin-left: 40px;
-          margin-right: 40px;
-          margin-top: 10px;
-          color: white; }
 
 .chart-viewer {
   padding-top: 15px;
