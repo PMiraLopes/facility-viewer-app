@@ -18,14 +18,18 @@ body {
 .main-container {
   width: calc(100vw - 175px);
   height: 100vh;
-  overflow: hidden; }
+  overflow: hidden;
+  overflow-y: scroll; }
   .main-container .container {
     width: 100%;
     padding: 0px; }
   .main-container .nav-tabs {
     border-bottom: 1px solid grey;
     background: white;
-    text-align: center; }
+    text-align: center;
+    position: fixed;
+    width: calc(100vw - 175px);
+    z-index: 2; }
     .main-container .nav-tabs li {
       display: inline-block;
       margin: 0px;
@@ -213,6 +217,8 @@ body {
   display: block;
   height: 100%;
   overflow-y: scroll; }
+  .chart-viewer h4, .chart-viewer h5 {
+    margin-left: 15px; }
   .chart-viewer .charts-box {
     display: flex;
     flex-flow: row;
@@ -227,5 +233,23 @@ body {
       -moz-box-shadow: 3px 3px 8px 0px #a8a8a8;
       box-shadow: 3px 3px 8px 0px #a8a8a8;
       height: 180px; }
+      .chart-viewer .charts-box .chart-container.bigger {
+        width: 700px; }
+    .chart-viewer .charts-box .results-container {
+      text-align: left; }
+      .chart-viewer .charts-box .results-container h5 {
+        margin: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px; }
+      .chart-viewer .charts-box .results-container p {
+        padding-left: 10px;
+        padding-top: 10px;
+        font-weight: 500; }
+        .chart-viewer .charts-box .results-container p span {
+          font-weight: 500;
+          color: red; }
+          .chart-viewer .charts-box .results-container p span.positive {
+            color: green; }
 
 /*# sourceMappingURL=facilityViewer.css.map */

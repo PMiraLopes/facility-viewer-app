@@ -32,6 +32,7 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
   $scope.boxesView = false;
   $scope.activeSpace = null;
 
+
   $scope.setSpaces = function(spaces) {
     var list = []
 
@@ -89,6 +90,10 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
   $(function () {
      $('[data-toggle="tooltip"]').tooltip()
    });
+
+   function round(value, decimals) {
+      return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+    }
 
    /////////////////////LINE CHART//////////////////
 

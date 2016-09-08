@@ -16,6 +16,7 @@ body {
   width: calc(100vw - 175px);
   height: 100vh;
   overflow: hidden;
+  overflow-y: scroll;
 
   .container{
     width: 100%;
@@ -26,6 +27,9 @@ body {
     border-bottom: 1px solid grey;
     background: white;
     text-align: center;
+    position: fixed;
+    width: calc(100vw - 175px);
+    z-index: 2;
     li {
       display: inline-block;
       margin: 0px;

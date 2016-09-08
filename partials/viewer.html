@@ -12,7 +12,7 @@
 
     <div class="tab-content">
 
-      <div id="viewer" class="tab-pane fade in active">
+      <div id="viewer" class="tab-pane fade in active" style="margin-top: 45px;">
         <div class="content-viewer">
           <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="500px" width="708px"></canvas>
           <script src="Release/UnityLoader.js" />
@@ -20,54 +20,61 @@
       </div>
 
       <div id="dashboard" class="tab-pane fade" ng-controller="DashboardCtrl">
-        <div class="chart-viewer">
+          <md-datepicker ng-model="dates.startYearDate" md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+          <span>to</span>
+          <md-datepicker ng-model="dates.endYearDate" md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+
+          <button ng-click="applyYears()">Apply</button>
+
+          <div class="chart-viewer">
+
             <div class="charts-box">
               <div class="chart-container">
                 <canvas
-                  id="bar"
+                  id="yearBarConsumption"
                   class="chart chart-bar"
-                  chart-data="barData"
-                  chart-labels="barLabels"
+                  chart-data="yearBarConsumption"
+                  chart-labels="yearBarLabels"
                   chart-legend="true"
-                  chart-series="barSeries"
-                  chart-options="barOptions"
+                  chart-series="consumptionsSeries"
+                  chart-options="yearBarConsumptionOptions"
                   chart-colors="colors"
                 >
                 </canvas>
               </div>
               <div class="chart-container">
                 <canvas
-                  id="line"
-                  class="chart chart-line"
-                  chart-data="chartData"
-                  chart-labels="chartLabels"
-                  chart-series="chartSeries"
-                  chart-options="chartOptions"
+                  id="yearBarCosts"
+                  class="chart chart-bar"
+                  chart-data="yearBarCosts"
+                  chart-labels="yearBarLabels"
+                  chart-legend="true"
+                  chart-series="costsSeries"
+                  chart-options="yearBarCostsOptions"
                   chart-colors="colors"
                 >
                 </canvas>
               </div>
-              <div class="chart-container">
-                <canvas
-                  id="yearsline"
-                  class="chart chart-line"
-                  chart-data="yearsChartData"
-                  chart-labels="chartLabels"
-                  chart-series="yearsChartSeries"
-                  chart-options="yearsChartOptions"
-                  chart-colors="colors">
-                </canvas>
+              <div class="chart-container results-container">
+                <h5>Year Results</h5>
+                <md-divider></md-divider>
+                <p>Consumption Results: <span ng-class="{'positive': yearResults <= 0}" ng-if="yearResults !== null">{{yearResults}} %</span></p>
+                <md-divider></md-divider>
+                <p>Costs Results: <span ng-class="{'positive': yearCosts <= 0}" ng-if="yearCosts !== null">{{yearCosts}} €</span></p>
               </div>
             </div>
+
+            <md-divider></md-divider>
+            <h4>Months Review</h4>
             <div class="charts-box">
               <div class="chart-container">
                 <canvas
-                  id="pie"
-                  class="chart chart-pie"
-                  chart-data="pieChartData"
-                  chart-labels="pieChartLabels"
-                  chart-options="pieChartOptions"
-                  chart-colors="colors"
+                  id="line"
+                  class="chart chart-line"
+                  chart-data="monthlyConsumptionLineData"
+                  chart-labels="months"
+                  chart-series="consumptionsSeries"
+                  chart-options="monthlyConsumptionLineOptions"
                 >
                 </canvas>
               </div>
@@ -75,18 +82,51 @@
                 <canvas
                   id="line"
                   class="chart chart-line"
-                  chart-data="priceChartData"
-                  chart-labels="priceChartLabels"
-                  chart-series="priceChartSeries"
-                  chart-options="priceChartOptions"
-                  chart-colors="colors"
+                  chart-data="monthsCompareConsumptionLine"
+                  chart-labels="months"
+                  chart-series="consumptionsSeries"
+                  chart-options="monthsCompareConsumptionLineOptions"
+                >
+                </canvas>
+              </div>
+              <div class="chart-container results-container">
+                <h5>Monthly Results</h5>
+                <md-divider></md-divider>
+                <p>Average Consumptions: {{monthlyConsumptionResults}} kWh</p>
+                <md-divider></md-divider>
+                <p>Average Costs: {{monthlyCostsResults}} €</span></p>
+              </div>
+            </div>
+
+            <h5>Months Compare</h5>
+            <div class="charts-box">
+              <div class="chart-container">
+                <canvas
+                  id="line"
+                  class="chart chart-line"
+                  chart-data="monthlyCostsLineData"
+                  chart-labels="months"
+                  chart-series="costsSeries"
+                  chart-options="monthlyCostsLineOptions"
+                >
+                </canvas>
+              </div>
+              <div class="chart-container">
+                <canvas
+                  id="line"
+                  class="chart chart-line"
+                  chart-data="monthsCompareCostsLine"
+                  chart-labels="months"
+                  chart-series="consumptionsSeries"
+                  chart-options="monthsCompareCostsLineOptions"
                 >
                 </canvas>
               </div>
             </div>
-        </div>
+
+          </div>
       </div>
-    </div>
+
     </div>
   </div>
 </div>
@@ -182,3 +222,71 @@
     </div>
   </div>
 </md-sidenav>
+
+
+
+
+
+      <!--  <div class="chart-viewer">
+            <div class="charts-box">
+              <div class="chart-container">
+                <canvas
+                  id="bar"
+                  class="chart chart-bar"
+                  chart-data="barData"
+                  chart-labels="barLabels"
+                  chart-legend="true"
+                  chart-series="barSeries"
+                  chart-options="barOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>
+            <div class="chart-container">
+                <canvas
+                  id="line"
+                  class="chart chart-line"
+                  chart-data="chartData"
+                  chart-labels="chartLabels"
+                  chart-series="chartSeries"
+                  chart-options="chartOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>
+              <div class="chart-container">
+                <canvas
+                  id="yearsline"
+                  class="chart chart-line"
+                  chart-data="yearsChartData"
+                  chart-labels="chartLabels"
+                  chart-series="yearsChartSeries"
+                  chart-options="yearsChartOptions"
+                  chart-colors="colors">
+                </canvas>
+              </div>
+            </div>
+            <div class="charts-box">
+              <div class="chart-container">
+                <canvas
+                  id="pie"
+                  class="chart chart-pie"
+                  chart-data="pieChartData"
+                  chart-labels="pieChartLabels"
+                  chart-options="pieChartOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>
+              <div class="chart-container">
+                <canvas
+                  id="line"
+                  class="chart chart-line"
+                  chart-data="priceChartData"
+                  chart-labels="priceChartLabels"
+                  chart-series="priceChartSeries"
+                  chart-options="priceChartOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>-->

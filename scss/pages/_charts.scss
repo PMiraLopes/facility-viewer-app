@@ -3,6 +3,10 @@
   display: block;;
   height: 100%;
   overflow-y: scroll;
+
+  h4, h5 {
+    margin-left: 15px;
+  }
   .charts-box{
     display: flex;
     flex-flow: row;
@@ -17,6 +21,32 @@
       -moz-box-shadow: 3px 3px 8px 0px rgba(168,168,168,1);
       box-shadow: 3px 3px 8px 0px rgba(168,168,168,1);
       height: 180px;
+
+      &.bigger {
+        width: 700px;
+      }
+    }
+    .results-container {
+      text-align: left;
+      h5{
+        margin: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+      }
+
+      p{
+        padding-left: 10px;
+        padding-top: 10px;
+        font-weight: 500;
+        span {
+          font-weight: 500;
+          color: red;
+          &.positive {
+            color: green;
+          }
+        }
+      }
     }
   }
 }
