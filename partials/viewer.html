@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div id="dashboard" class="tab-pane fade" ng-controller="DashboardCtrl">
+      <div id="dashboard" class="tab-pane fade" ng-controller="DashboardCtrl" style="margin-top: 45px;">
           <md-datepicker ng-model="dates.startYearDate" md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
           <span>to</span>
           <md-datepicker ng-model="dates.endYearDate" md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
@@ -166,30 +166,28 @@
         </div>
 
         <div ng-controller="DashboardCtrl">
-          <div class="chart">
             <canvas
-              id="line"
-              class="chart chart-line"
-              chart-data="chartData"
-              chart-labels="chartLabels"
-              chart-series="chartSeries"
-              chart-options="chartOptions"
+              id="yearBarConsumption"
+              class="chart chart-bar"
+              chart-data="yearBarConsumption"
+              chart-labels="yearBarLabels"
+              chart-legend="true"
+              chart-series="consumptionsSeries"
+              chart-options="yearBarConsumptionOptions"
               chart-colors="colors"
             >
             </canvas>
-          </div>
-          <div class="chart">
             <canvas
-              id="line"
-              class="chart chart-line"
-              chart-data="priceChartData"
-              chart-labels="priceChartLabels"
-              chart-series="priceChartSeries"
-              chart-options="priceChartOptions"
+              id="yearBarCosts"
+              class="chart chart-bar"
+              chart-data="yearBarCosts"
+              chart-labels="yearBarLabels"
+              chart-legend="true"
+              chart-series="costsSeries"
+              chart-options="yearBarCostsOptions"
               chart-colors="colors"
             >
             </canvas>
-          </div>
         </div>
       </div>
 
@@ -208,13 +206,13 @@
           </li>
           <li ng-repeat="object in objects">
             <div class="li-option">
-              {{object}}
+              {{object.name}}
             </div>
             <div class="li-option">
-              Active
+              {{object.status}}
             </div>
             <div class="li-option">
-              On
+              {{object.consumption}} kWh
             </div>
           </li>
         </ul>

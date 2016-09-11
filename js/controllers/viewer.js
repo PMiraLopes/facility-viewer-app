@@ -67,7 +67,7 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
     }
 
     $rootScope.name = space.spaceName;
-    $rootScope.objects = space.objects;
+    $rootScope.objects = space.facilityObjects;
     SendMessage("ObjectManager", "selectSpace", space.spaceName);
   }
 
@@ -79,6 +79,10 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
   $scope.setNormalMode = function () {
     $scope.camera = 'normal';
     SendMessage("ObjectManager", "normalMode", "");
+  }
+
+  $scope.highlightObjects = function() {
+    SendMessage("ObjectManager", "highlightObjects", "");
   }
 
   $timeout(function () {
