@@ -48,6 +48,7 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
     }
 
     $scope.spaces = list;
+    console.log($scope.spaces);
   }
 
   $scope.setFloors = function (floors) {

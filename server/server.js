@@ -50,12 +50,12 @@ var dummyData = [
 var overallConsumption = [
   {
     "name": "Box-Developers",
-    "value": 50,
+    "value": 20,
     "type": "overall"
   },
   {
     "name": "Box-WC1",
-    "value": 5,
+    "value": 0,
     "type": "overall"
   },
   {
@@ -65,12 +65,12 @@ var overallConsumption = [
   },
   {
     "name": "Box-WC3",
-    "value": 5,
+    "value": 0,
     "type": "overall"
   },
   {
     "name": "Box-Designers",
-    "value": 30,
+    "value": 14,
     "type": "overall",
   },
   {

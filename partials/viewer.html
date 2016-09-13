@@ -16,6 +16,7 @@
         <div class="content-viewer">
           <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="500px" width="708px"></canvas>
           <script src="Release/UnityLoader.js" />
+          <img src="images/spectrum.png" alt="Spectrum" style="width: 40%;"/>
         </div>
       </div>
 
@@ -208,7 +209,7 @@
             <div class="li-option">
               {{object.name}}
             </div>
-            <div class="li-option">
+            <div class="li-option" ng-class="{'on' : object.status === 'Active'}">
               {{object.status}}
             </div>
             <div class="li-option">
