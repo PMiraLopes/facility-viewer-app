@@ -30,8 +30,15 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
   $scope.floors = [];
   $scope.camera = 'orbit';
   $scope.boxesView = false;
+  $scope.objectsView = false;
   $scope.activeSpace = null;
 
+  $rootScope.values = {};
+
+  $rootScope.values.ocupation = 4;
+  $rootScope.values.temperature = 22;
+  $rootScope.values.humidity = 12;
+  $rootScope.values.consumption = 17.5;
 
   $scope.setSpaces = function(spaces) {
     var list = []
@@ -56,10 +63,6 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
     SendMessage("ObjectManager", "toggleBoxesView", "");
   }
 
-  $scope.toggleObjectsView = function () {
-
-  }
-
   $scope.selectRoom = function (space) {
 
     if(!$mdSidenav('right').isOpen()){
@@ -68,6 +71,32 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
 
     $rootScope.name = space.spaceName;
     $rootScope.objects = space.facilityObjects;
+
+    if(space.spaceName === 'Developers Room'){
+      $rootScope.values.ocupation = 4;
+      $rootScope.values.consumption = 17.5;
+    }
+
+    if(space.spaceName === 'Designers Room'){
+      $rootScope.values.ocupation = 2;
+      $rootScope.values.consumption = 12.5;
+    }
+
+    if(space.spaceName === 'WC 1' || space.spaceName === 'WC 2' || space.spaceName === 'WC 3'){
+      $rootScope.values.ocupation = 0;
+      $rootScope.values.consumption = 0;
+    }
+
+    if(space.spaceName === 'Meeting Room'){
+      $rootScope.values.ocupation = 1;
+      $rootScope.values.consumption = 8;
+    }
+
+    if(space.spaceName === 'Balcony'){
+      $rootScope.values.ocupation = 0;
+      $rootScope.values.consumption = 0;
+    }
+
     SendMessage("ObjectManager", "selectSpace", space.spaceName);
   }
 
@@ -82,6 +111,7 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
   }
 
   $scope.highlightObjects = function() {
+    $scope.objectsView = !$scope.objectsView;
     SendMessage("ObjectManager", "highlightObjects", "");
   }
 

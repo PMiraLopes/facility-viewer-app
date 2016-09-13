@@ -82,7 +82,7 @@ body {
       .sidebar ul .icon:hover {
         fill: #a3afb7; }
       .sidebar ul .icon.active {
-        fill: grey; }
+        fill: #00ADF9; }
     .sidebar ul ul {
       padding-top: 10px;
       padding-bottom: 16px; }
