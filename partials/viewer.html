@@ -56,6 +56,20 @@
                 >
                 </canvas>
               </div>
+            </div>
+
+            <div class="charts-box">
+              <div class="chart-container">
+                <canvas
+                  id="pie"
+                  class="chart chart-pie"
+                  chart-data="pieYearData"
+                  chart-labels="pieChartLabels"
+                  chart-options="pieYearOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>
               <div class="chart-container results-container">
                 <h5>Year Results</h5>
                 <md-divider></md-divider>
@@ -76,31 +90,10 @@
                   chart-labels="months"
                   chart-series="consumptionsSeries"
                   chart-options="monthlyConsumptionLineOptions"
+                  chart-colors="colors"
                 >
                 </canvas>
               </div>
-              <div class="chart-container">
-                <canvas
-                  id="line"
-                  class="chart chart-line"
-                  chart-data="monthsCompareConsumptionLine"
-                  chart-labels="months"
-                  chart-series="consumptionsSeries"
-                  chart-options="monthsCompareConsumptionLineOptions"
-                >
-                </canvas>
-              </div>
-              <div class="chart-container results-container">
-                <h5>Monthly Results</h5>
-                <md-divider></md-divider>
-                <p>Average Consumptions: {{monthlyConsumptionResults}} kWh</p>
-                <md-divider></md-divider>
-                <p>Average Costs: {{monthlyCostsResults}} €</span></p>
-              </div>
-            </div>
-
-            <h5>Months Compare</h5>
-            <div class="charts-box">
               <div class="chart-container">
                 <canvas
                   id="line"
@@ -109,6 +102,46 @@
                   chart-labels="months"
                   chart-series="costsSeries"
                   chart-options="monthlyCostsLineOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>
+            </div>
+            <div class="charts-box">
+              <div class="chart-container results-container">
+                <h5>Monthly Results</h5>
+                <md-divider></md-divider>
+                <p>Average Consumptions: {{monthlyConsumptionResults}} kWh</p>
+                <md-divider></md-divider>
+                <p>Average Costs: {{monthlyCostsResults}} €</span></p>
+              </div>
+              <div class="chart-container">
+                <canvas
+                  id="line"
+                  class="chart chart-line"
+                  chart-data="monthsCompareConsumptionLine"
+                  chart-labels="months"
+                  chart-series="monthsCompareConsumptionSeries"
+                  chart-options="monthsCompareConsumptionLineOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>
+            </div>
+
+            <md-divider></md-divider>
+            <h4>Days Review</h4>
+
+            <div class="charts-box">
+              <div class="chart-container">
+                <canvas
+                  id="line"
+                  class="chart chart-line"
+                  chart-data="dailyCurrentConsumptionLineData"
+                  chart-labels="days"
+                  chart-series="dailyCurrentConsumptionSeries"
+                  chart-options="dailyCurrentConsumptionOptions"
+                  chart-colors="colors"
                 >
                 </canvas>
               </div>
@@ -116,15 +149,50 @@
                 <canvas
                   id="line"
                   class="chart chart-line"
-                  chart-data="monthsCompareCostsLine"
-                  chart-labels="months"
-                  chart-series="consumptionsSeries"
-                  chart-options="monthsCompareCostsLineOptions"
+                  chart-data="dailyCurrentCostsLineData"
+                  chart-labels="days"
+                  chart-series="dailyCurrentCostsSeries"
+                  chart-options="dailyCurrentCostsOptions"
+                  chart-colors="colors"
                 >
                 </canvas>
               </div>
             </div>
-
+            <div class="charts-box">
+              <div class="chart-container">
+                <canvas
+                id="line"
+                class="chart chart-line"
+                chart-data="dailyCostsLineData"
+                chart-labels="days"
+                chart-series="dailyCostSeries"
+                chart-options="dailyCostsOptions"
+                chart-colors="colors"
+                >
+                </canvas>
+              </div>
+              <div class="chart-container">
+                <canvas
+                  id="line"
+                  class="chart chart-line"
+                  chart-data="dailyConsumptionLineData"
+                  chart-labels="days"
+                  chart-series="dailyConsumptionSeries"
+                  chart-options="dailyConsumptionOptions"
+                  chart-colors="colors"
+                >
+                </canvas>
+              </div>
+          </div>
+          <div class="charts-box">
+            <div class="chart-container results-container">
+              <h5>Daily Comparition</h5>
+              <md-divider></md-divider>
+              <p>Average Consumptions: <span ng-class="{'positive': averageMonthResults <= 0}" ng-if="averageMonthResults !== null">{{averageMonthResults}} %</span></p>
+              <md-divider></md-divider>
+              <p>Costs Results: <span ng-class="{'positive': monthCosts <= 0}" ng-if="monthCosts !== null">{{monthCosts}} €</span></p>
+            </div>
+          </div>
           </div>
       </div>
 
