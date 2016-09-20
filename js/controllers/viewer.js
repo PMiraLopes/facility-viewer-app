@@ -111,6 +111,11 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
     SendMessage("ObjectManager", "normalMode", "");
   }
 
+  $scope.setOrthographic = function () {
+    $scope.camera = 'orthographic';
+    SendMessage("ObjectManager", "setOrthographic", "");
+  }
+
   $scope.highlightObjects = function() {
     $scope.objectsView = !$scope.objectsView;
     SendMessage("ObjectManager", "highlightObjects", "");
