@@ -62,14 +62,14 @@ angular.module('FacilityManager.dashboard', ['ui.router', 'chart.js', 'ngMateria
   $scope.monthlyCostsLineData = [[]]
   $scope.monthlyConsumptionLineOptions = {
     title: {
-      text: "Monthly consumption (kWh)",
+      text: "Current year monthly consumption (kWh)",
       display: true,
       padding: 10
     }
   }
   $scope.monthlyCostsLineOptions = {
     title: {
-      text: "Monthly costs (€)",
+      text: "Current year monthly costs (€)",
       display: true,
       padding: 10
     }
@@ -170,11 +170,6 @@ angular.module('FacilityManager.dashboard', ['ui.router', 'chart.js', 'ngMateria
 
     $scope.yearResults = Math.round(((endYearData - startYearData) * 100)/ startYearData);
     $scope.yearCosts = Math.round((endYearData - startYearData) * $scope.price);
-
-    for(var i = 0; i < $scope.currentMonth; i++){
-        $scope.monthlyConsumptionLineData[0].push($scope.data.years[1].data[i].total);
-        $scope.monthlyCostsLineData[0].push($scope.data.years[1].data[i].total * $scope.price);
-    }
 
     $scope.monthlyConsumptionResults = endYearData/($scope.currentMonth + 1);
     $scope.monthlyCostsResults = (endYearData * $scope.price)/($scope.currentMonth + 1);

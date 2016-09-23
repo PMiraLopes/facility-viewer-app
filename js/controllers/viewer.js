@@ -90,7 +90,7 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
 
     if(space.spaceName === 'Meeting Room'){
       $rootScope.values.ocupation = 1;
-      $rootScope.values.consumption = 8;
+      $rootScope.values.consumption = 15;
     }
 
     if(space.spaceName === 'Balcony'){
