@@ -8,7 +8,7 @@ angular.module('FacilityManager.dashboard', ['ui.router', 'chart.js', 'ngMateria
   $scope.date = new Date();
 
   $scope.currentYear = $scope.date.getFullYear();
-  $scope.currentMonth = $scope.date.getMonth();
+  $scope.currentMonth = $scope.date.getMonth() - 1;
 
   $scope.minDate = new Date(
     $scope.currentYear - 1,

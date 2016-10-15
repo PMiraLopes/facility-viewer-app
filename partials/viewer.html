@@ -16,7 +16,7 @@
         <div class="content-viewer">
           <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="500px" width="708px"></canvas>
           <script src="Release/UnityLoader.js" />
-          <img src="images/spectrum.png" alt="Spectrum" style="width: 40%;"/>
+          <img src="images/spectrum3.png" alt="Spectrum" style="display:block; margin-left:275px"/>
         </div>
       </div>
 
@@ -24,18 +24,228 @@
         <div class="container">
           <ul class="nav nav-tabs">
             <li class="active">
-              <a data-toggle="tab" href="#years">Years</a>
+              <a data-toggle="tab" href="#current">Current Consumptions</a>
             </li>
             <li>
-              <a data-toggle="tab" href="#months">Months</a>
-            </li>
-            <li>
-              <a data-toggle="tab" href="#days">Days</a>
+              <a data-toggle="tab" href="#comparision">Period Comparision</a>
             </li>
           </ul>
 
           <div class="tab-content">
 
+            <div id="current" class="tab-pane fade in active" style="margin-top: 45px;">
+              <div class="chart-viewer">
+                <h4>Years</h4>
+                <div class="charts-box">
+                  <div class="chart-container">
+                    <canvas
+                      id="yearBarConsumption"
+                      class="chart chart-bar"
+                      chart-data="yearBarConsumption"
+                      chart-labels="yearBarLabels"
+                      chart-legend="true"
+                      chart-series="consumptionsSeries"
+                      chart-options="yearBarConsumptionOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                  <div class="chart-container">
+                    <canvas
+                      id="yearBarCosts"
+                      class="chart chart-bar"
+                      chart-data="yearBarCosts"
+                      chart-labels="yearBarLabels"
+                      chart-legend="true"
+                      chart-series="costsSeries"
+                      chart-options="yearBarCostsOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                </div>
+                <div class="charts-box">
+                  <div class="chart-container">
+                    <canvas
+                      id="pie"
+                      class="chart chart-pie"
+                      chart-data="pieYearData"
+                      chart-labels="pieChartLabels"
+                      chart-options="pieYearOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                  <div class="chart-container results-container">
+                    <h5>Year Results</h5>
+                    <md-divider></md-divider>
+                    <p>Consumption Results: <span ng-class="{'positive': yearResults <= 0}" ng-if="yearResults !== null">{{yearResults}} %</span></p>
+                    <md-divider></md-divider>
+                    <p>Costs Results: <span ng-class="{'positive': yearCosts <= 0}" ng-if="yearCosts !== null">{{yearCosts}} €</span></p>
+                  </div>
+                </div>
+                <h4>Months</h4>
+                <div class="charts-box">
+                  <div class="chart-container">
+                    <canvas
+                      id="line"
+                      class="chart chart-line"
+                      chart-data="monthlyConsumptionLineData"
+                      chart-labels="months"
+                      chart-series="consumptionsSeries"
+                      chart-options="monthlyConsumptionLineOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                  <div class="chart-container">
+                    <canvas
+                      id="line"
+                      class="chart chart-line"
+                      chart-data="monthlyCostsLineData"
+                      chart-labels="months"
+                      chart-series="costsSeries"
+                      chart-options="monthlyCostsLineOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                </div>
+                <h4>Days</h4>
+                <div class="charts-box">
+                  <div class="chart-container">
+                    <canvas
+                      id="line"
+                      class="chart chart-line"
+                      chart-data="dailyCurrentConsumptionLineData"
+                      chart-labels="days"
+                      chart-series="dailyCurrentConsumptionSeries"
+                      chart-options="dailyCurrentConsumptionOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                  <div class="chart-container">
+                    <canvas
+                      id="line"
+                      class="chart chart-line"
+                      chart-data="dailyCurrentCostsLineData"
+                      chart-labels="days"
+                      chart-series="dailyCurrentCostsSeries"
+                      chart-options="dailyCurrentCostsOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="comparision" class="tab-pane fade in" style="margin-top: 45px;">
+              <md-datepicker ng-model="dates.startYearDate" md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+              <span>to</span>
+              <md-datepicker ng-model="dates.endYearDate" md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+              <button ng-click="applyYears()">Apply</button>
+              <div class="chart-viewer">
+                <h4>Years</h4>
+                <div class="charts-box">
+                  <div class="chart-container">
+                    <canvas
+                      id="yearBarConsumption"
+                      class="chart chart-bar"
+                      chart-data="yearBarConsumption"
+                      chart-labels="yearBarLabels"
+                      chart-legend="true"
+                      chart-series="consumptionsSeries"
+                      chart-options="yearBarConsumptionOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                  <div class="chart-container">
+                    <canvas
+                      id="yearBarCosts"
+                      class="chart chart-bar"
+                      chart-data="yearBarCosts"
+                      chart-labels="yearBarLabels"
+                      chart-legend="true"
+                      chart-series="costsSeries"
+                      chart-options="yearBarCostsOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                </div>
+                <div class="charts-box">
+                  <div class="chart-container results-container">
+                    <h5>Year Results</h5>
+                    <md-divider></md-divider>
+                    <p>Consumption Results: <span ng-class="{'positive': yearResults <= 0}" ng-if="yearResults !== null">{{yearResults}} %</span></p>
+                    <md-divider></md-divider>
+                    <p>Costs Results: <span ng-class="{'positive': yearCosts <= 0}" ng-if="yearCosts !== null">{{yearCosts}} €</span></p>
+                  </div>
+                </div>
+                <h4>Months</h4>
+                <div class="charts-box">
+                  <div class="chart-container results-container">
+                    <h5>Monthly Results</h5>
+                    <md-divider></md-divider>
+                    <p>Average Consumptions: {{monthlyConsumptionResults}} kWh</p>
+                    <md-divider></md-divider>
+                    <p>Average Costs: {{monthlyCostsResults}} €</span></p>
+                  </div>
+                  <div class="chart-container">
+                    <canvas
+                      id="line"
+                      class="chart chart-line"
+                      chart-data="monthsCompareConsumptionLine"
+                      chart-labels="months"
+                      chart-series="monthsCompareConsumptionSeries"
+                      chart-options="monthsCompareConsumptionLineOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                </div>
+                <h4>Days</h4>
+                <div class="charts-box">
+                  <div class="chart-container">
+                    <canvas
+                    id="line"
+                    class="chart chart-line"
+                    chart-data="dailyCostsLineData"
+                    chart-labels="days"
+                    chart-series="dailyCostSeries"
+                    chart-options="dailyCostsOptions"
+                    chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                  <div class="chart-container">
+                    <canvas
+                      id="line"
+                      class="chart chart-line"
+                      chart-data="dailyConsumptionLineData"
+                      chart-labels="days"
+                      chart-series="dailyConsumptionSeries"
+                      chart-options="dailyConsumptionOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+              </div>
+              <div class="charts-box">
+                <div class="chart-container results-container">
+                  <h5>Daily Comparition</h5>
+                  <md-divider></md-divider>
+                  <p>Average Consumptions: <span ng-class="{'positive': averageMonthResults <= 0}" ng-if="averageMonthResults !== null">{{averageMonthResults}} %</span></p>
+                  <md-divider></md-divider>
+                  <p>Costs Results: <span ng-class="{'positive': monthCosts <= 0}" ng-if="monthCosts !== null">{{monthCosts}} €</span></p>
+                </div>
+              </div>
+              </div>
+            </div>
+<!--
             <div id="years" class="tab-pane fade in active" style="margin-top: 45px;">
               <md-datepicker ng-model="dates.startYearDate" md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
               <span>to</span>
@@ -221,7 +431,7 @@
                 </div>
               </div>
             </div>
-            </div>
+          </div>-->
           </div>
         </div>
       </div>
@@ -232,8 +442,7 @@
 <md-sidenav
   class="md-sidenav-right sidebarRight"
   md-component-id="right"
-  md-disable-backdrop md-whiteframe="4"
->
+  md-disable-backdrop md-whiteframe="4"y>
   <md-toolbar class="sidebarRight-header">
     <md-button class="md-icon-button sidebar-button" aria-label="Settings" ng-click="closeSidenav()">
       <md-icon md-svg-icon="images/icons/close.svg"></md-icon>

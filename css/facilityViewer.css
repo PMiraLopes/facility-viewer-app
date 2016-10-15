@@ -73,6 +73,17 @@ body {
       color: black; }
     .sidebar ul .tooltip .tooltip-arrow {
       display: none; }
+    .sidebar ul .icon-info {
+      width: 31%;
+      display: inline-block;
+      text-align: center;
+      padding-bottom: 10px;
+      padding-right: 10px; }
+    .sidebar ul .icon-info2 {
+      width: 40%;
+      display: inline-block;
+      text-align: center;
+      padding-bottom: 10px; }
     .sidebar ul .icon {
       fill: white;
       margin-left: 10px;
@@ -95,6 +106,8 @@ body {
         padding-left: 5px; }
         .sidebar ul ul li span:hover {
           color: #a3afb7; }
+        .sidebar ul ul li span.active {
+          color: #00ADF9; }
     .sidebar ul h5 {
       border-top: 1px solid white;
       padding-top: 16px;
@@ -217,7 +230,7 @@ body {
   display: block;
   height: 100%;
   overflow-y: scroll; }
-  .chart-viewer h4, .chart-viewer h5 {
+  .chart-viewer h4, .chart-viewer h5, .chart-viewer h3 {
     margin-left: 15px; }
   .chart-viewer .charts-box {
     display: flex;

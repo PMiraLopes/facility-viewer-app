@@ -23,6 +23,11 @@ function overallViewSelectedSpace(params) {
   console.log(params);
 }
 
+function selectSpaceFromViewer(params){
+  var scope = angular.element($("#controller")).scope();
+  scope.selectSpaceFromViewer(params);
+}
+
 angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial'])
 
 .controller('ViewerCtrl', ['$scope', '$timeout', '$rootScope', '$mdSidenav', function ($scope, $timeout, $rootScope, $mdSidenav) {
@@ -40,6 +45,16 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
   $rootScope.values.humidity = 12;
   $rootScope.values.consumption = 17.5;
 
+  $scope.selectedSpace = null;
+
+  $scope.getSpaceFromName = function(name){
+    for(var i = 0; i < $scope.spaces.length; i++){
+      if($scope.spaces[i].spaceName === name)
+        return $scope.spaces[i];
+    }
+    return null;
+  }
+
   $scope.setSpaces = function(spaces) {
     var list = []
 
@@ -48,7 +63,6 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
     }
 
     $scope.spaces = list;
-    console.log($scope.spaces);
   }
 
   $scope.setFloors = function (floors) {
@@ -64,14 +78,14 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
     SendMessage("ObjectManager", "toggleBoxesView", "");
   }
 
-  $scope.selectRoom = function (space) {
-
+  $scope.spacesInformations = function(space) {
     if(!$mdSidenav('right').isOpen()){
       $scope.openSidenav();
     }
 
     $rootScope.name = space.spaceName;
     $rootScope.objects = space.facilityObjects;
+    $scope.selectedSpace = space.spaceName;
 
     if(space.spaceName === 'Developers Room'){
       $rootScope.values.ocupation = 4;
@@ -97,7 +111,15 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
       $rootScope.values.ocupation = 0;
       $rootScope.values.consumption = 0;
     }
+  }
 
+  $scope.selectSpaceFromViewer = function(space){
+    var facilitySpace = $scope.getSpaceFromName(space);
+    $scope.spacesInformations(facilitySpace);
+  }
+
+  $scope.selectRoom = function (space) {
+    $scope.spacesInformations(space);
     SendMessage("ObjectManager", "selectSpace", space.spaceName);
   }
 
@@ -181,6 +203,7 @@ angular.module('FacilityManager.viewer', ['ui.router', 'chart.js', 'ngMaterial']
   };
 
   $scope.closeSidenav = function () {
+    $scope.selectedSpace = 'none';
     $mdSidenav('right').close();
   }
 
