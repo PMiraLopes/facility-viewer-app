@@ -147,6 +147,42 @@
               <md-datepicker ng-model="dates.endYearDate" md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
               <button ng-click="applyYears()">Apply</button>
               <div class="chart-viewer">
+							  <h4>Days</h4>
+                <div class="charts-box">
+                  <div class="chart-container">
+                    <canvas
+                    id="line"
+                    class="chart chart-line"
+                    chart-data="dailyCostsLineData"
+                    chart-labels="days"
+                    chart-series="dailyCostSeries"
+                    chart-options="dailyCostsOptions"
+                    chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+                  <div class="chart-container">
+                    <canvas
+                      id="line"
+                      class="chart chart-line"
+                      chart-data="dailyConsumptionLineData"
+                      chart-labels="days"
+                      chart-series="dailyConsumptionSeries"
+                      chart-options="dailyConsumptionOptions"
+                      chart-colors="colors"
+                    >
+                    </canvas>
+                  </div>
+              </div>
+              <div class="charts-box">
+                <div class="chart-container results-container">
+                  <h5>Daily Comparition</h5>
+                  <md-divider></md-divider>
+                  <p>Average Consumptions: <span ng-class="{'positive': averageMonthResults <= 0}" ng-if="averageMonthResults !== null">{{averageMonthResults}} %</span></p>
+                  <md-divider></md-divider>
+                  <p>Costs Results: <span ng-class="{'positive': monthCosts <= 0}" ng-if="monthCosts !== null">{{monthCosts}} €</span></p>
+                </div>
+              </div>
                 <h4>Years</h4>
                 <div class="charts-box">
                   <div class="chart-container">
@@ -207,42 +243,6 @@
                     </canvas>
                   </div>
                 </div>
-                <h4>Days</h4>
-                <div class="charts-box">
-                  <div class="chart-container">
-                    <canvas
-                    id="line"
-                    class="chart chart-line"
-                    chart-data="dailyCostsLineData"
-                    chart-labels="days"
-                    chart-series="dailyCostSeries"
-                    chart-options="dailyCostsOptions"
-                    chart-colors="colors"
-                    >
-                    </canvas>
-                  </div>
-                  <div class="chart-container">
-                    <canvas
-                      id="line"
-                      class="chart chart-line"
-                      chart-data="dailyConsumptionLineData"
-                      chart-labels="days"
-                      chart-series="dailyConsumptionSeries"
-                      chart-options="dailyConsumptionOptions"
-                      chart-colors="colors"
-                    >
-                    </canvas>
-                  </div>
-              </div>
-              <div class="charts-box">
-                <div class="chart-container results-container">
-                  <h5>Daily Comparition</h5>
-                  <md-divider></md-divider>
-                  <p>Average Consumptions: <span ng-class="{'positive': averageMonthResults <= 0}" ng-if="averageMonthResults !== null">{{averageMonthResults}} %</span></p>
-                  <md-divider></md-divider>
-                  <p>Costs Results: <span ng-class="{'positive': monthCosts <= 0}" ng-if="monthCosts !== null">{{monthCosts}} €</span></p>
-                </div>
-              </div>
               </div>
             </div>
 <!--
